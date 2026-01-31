@@ -9,9 +9,9 @@ def main() -> None:
         players = json.load(file)
 
     for nickname, player_info in players.items():
-        race_info = player_info["race"]
-        guild_info = player_info["guild"]
-        skills_info = player_info["race"]["skills"]
+        race_info = player_info.get("race")
+        guild_info = player_info.get("guild")
+        skills_info = player_info["race"].get("skills")
 
         race, is_race_created = Race.objects.get_or_create(
             name=race_info["name"],
